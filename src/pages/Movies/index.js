@@ -4,6 +4,7 @@ import useAPIrequest from '../../adapters/useAPIrequest';
 import MovieCard from '../../components/MovieCard';
 import useWidnowLocation from '../../hooks/useWidnowLocation';
 import Pagination from './Pagination';
+import SortControls from './SortControls';
 
 const Movies = () => {
 
@@ -27,6 +28,7 @@ const Movies = () => {
         <VStack spacing={6} p={6} bg='gray.700'>
             <Heading alignSelf='start' as='h1' fontSize='3xl'>{title}</Heading>
             <Divider />
+            <SortControls />
             <SimpleGrid w='full' columns={4} spacing={6}>
                 {response && response.data.movies.map((val, key) => {
                     return (
