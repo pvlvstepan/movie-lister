@@ -1,14 +1,29 @@
-import { AspectRatio, Heading, Image, Text, VStack } from '@chakra-ui/react';
-import React from 'react';
+import { AspectRatio, Heading, Image, Skeleton, SkeletonText, Text, VStack } from '@chakra-ui/react';
+import React, { useEffect, useState } from 'react';
 
-const MovieCard = () => {
+const MovieCard = ({ img, title, year, isLoading }) => {
+
+    const [imageIsLoading, setImageIsLoading] = useState(true);
+
+    useEffect(() => {
+        if (isLoading === true) {
+            setImageIsLoading(true);
+        }
+    }, [isLoading]);
+
     return (
         <VStack align='start'>
             <AspectRatio ratio={2 / 3} w='full'>
-                <Image rounded='xl' src='https://via.placeholder.com/1000x1440' />
+                <Skeleton rounded='xl' isLoaded={!isLoading && !imageIsLoading}>
+                    <Image rounded='xl' src={img} onLoad={() => setImageIsLoading(false)} />
+                </Skeleton>
             </AspectRatio>
-            <Heading as='h3' fontSize='md'>Sample Movie Title</Heading>
-            <Text >2020</Text>
+            <Skeleton maxW='full' isLoaded={!isLoading}>
+                <Heading maxW='full' as='h3' fontSize='md' isTruncated title={title}>{title}</Heading>
+            </Skeleton>
+            <Skeleton maxW='min' isLoaded={!isLoading}>
+                <Text >{year}</Text>
+            </Skeleton>
         </VStack>
     );
 };

@@ -5,7 +5,7 @@ import TopRated from './TopRated';
 
 const Home = () => {
     return (
-        <Box as='section'>
+        <Box as='section' flex='60%'>
             <NewRelease />
             <TopRated />
         </Box>
