@@ -1,7 +1,8 @@
-import { AspectRatio, Heading, Image, Skeleton, SkeletonText, Text, VStack } from '@chakra-ui/react';
+import { AspectRatio, Heading, HStack, Image, Skeleton, SkeletonText, Text, VStack } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
+import { AiFillStar } from 'react-icons/ai';
 
-const MovieCard = ({ img, title, year, isLoading }) => {
+const MovieCard = ({ img, title, year, rating, isLoading }) => {
 
     const [imageIsLoading, setImageIsLoading] = useState(true);
 
@@ -21,8 +22,12 @@ const MovieCard = ({ img, title, year, isLoading }) => {
             <Skeleton maxW='full' isLoaded={!isLoading}>
                 <Heading maxW='full' as='h3' fontSize='md' isTruncated title={title}>{title}</Heading>
             </Skeleton>
-            <Skeleton maxW='min' isLoaded={!isLoading}>
-                <Text >{year}</Text>
+            <Skeleton width='min' isLoaded={!isLoading}>
+                <HStack width='full' align='center'>
+                    <Text >{year}</Text>
+                    <AiFillStar fontSize='20px' color='green' />
+                    <Text whiteSpace='nowrap' display='flex' dir='row' fontWeight='semibold'>{rating} / 10</Text>
+                </HStack>
             </Skeleton>
         </VStack>
     );

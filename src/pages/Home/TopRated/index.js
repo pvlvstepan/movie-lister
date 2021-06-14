@@ -27,7 +27,12 @@ const TopRated = () => {
                 {response && response.data.movies.map((val, key) => {
                     return (
                         <GridItem key={key}>
-                            <MovieCard img={val['medium_cover_image']} title={val['title_english']} year={val['year']} isLoading={isLoading} />
+                            <MovieCard
+                                img={val['medium_cover_image']}
+                                title={val['title_english']}
+                                year={val['year']}
+                                isLoading={isLoading}
+                                rating={val['rating']} />
                         </GridItem>
                     );
                 })}
