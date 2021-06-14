@@ -1,14 +1,19 @@
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import useAPIrequest from "./adapters/useAPIrequest";
+import Home from "./pages/Home";
+import Movie from "./pages/Movie";
 
 const App = () => {
 
-  const { response, error } = useAPIrequest('https://yts.mx/api/v2/list_movies.json');
-
-  console.log(response);
-
   return (
-    <h1>Hello World</h1>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path='/' component={Home} />
+        <Route path='/movie' component={Movie} />
+      </Switch>
+    </BrowserRouter>
   );
+
 };
 
 export default App;
