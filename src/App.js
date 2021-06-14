@@ -1,5 +1,6 @@
 import { Box, Container, Flex, GridItem, SimpleGrid } from "@chakra-ui/react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import CategoriesNav from "./components/CategoriesNav";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Movie from "./pages/Movie";
@@ -24,7 +25,7 @@ const App = () => {
             </Switch>
           </GridItem>
           <GridItem>
-
+            <CategoriesNav />
           </GridItem>
         </SimpleGrid>
       </BrowserRouter>

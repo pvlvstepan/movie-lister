@@ -19,7 +19,7 @@ const RecentlyAdded = () => {
 
     return (
         <VStack spacing={6} align='start' py={6}>
-            <Heading whiteSpace='nowrap' as='h2' fontSize='2xl'>Recently Added</Heading>
+            <Heading whiteSpace='nowrap' textTransform='uppercase' as='h4' fontSize='md'>Recently Added</Heading>
             <Box as='hr' w='full' />
             {response && response.data.movies.map((val, key) => {
                 return (
@@ -34,7 +34,6 @@ const RecentlyAdded = () => {
                     </GridItem>
                 );
             })}
-            <Box as='hr' w='full' />
             <Button w='full' colorScheme='green'>View More</Button>
         </VStack>
     );

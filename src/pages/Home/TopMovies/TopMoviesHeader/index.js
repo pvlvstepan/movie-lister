@@ -12,7 +12,7 @@ const TopMoviesHeader = ({ setPage, page, setIsLoading, type }) => {
 
     return (
         <Flex direction='row' w='full' align='center' py={6}>
-            <Heading whiteSpace='nowrap' as='h2' fontSize='2xl'>Top {type === 'rating' ? 'Rated' : type === 'like_count' ? 'Liked' : 'Downloads'}</Heading>
+            <Heading whiteSpace='nowrap' as='h2' fontSize='2xl'>Top {type === 'rating' ? 'Rated' : type === 'like_count' ? 'Likes' : 'Downloads'}</Heading>
             <Box w='full' px={3}>
                 <hr />
             </Box>
