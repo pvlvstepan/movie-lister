@@ -2,7 +2,7 @@ import { Spacer, Flex, Heading, HStack, IconButton, Button } from '@chakra-ui/re
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import React from 'react';
 
-const TopRatedHeader = ({ setPage, page, setIsLoading }) => {
+const TopMoviesHeader = ({ setPage, page, setIsLoading, type }) => {
 
     const handlePageNav = (dir) => {
         setIsLoading(true);
@@ -11,7 +11,7 @@ const TopRatedHeader = ({ setPage, page, setIsLoading }) => {
 
     return (
         <Flex direction='row' w='full' align='center' py={6}>
-            <Heading as='h2' fontSize='2xl'>Top Rated</Heading>
+            <Heading as='h2' fontSize='2xl'>Top {type === 'rating' ? 'Rated' : type === 'like_count' ? 'Liked' : 'Downloads'}</Heading>
             <Spacer />
             <HStack>
                 <IconButton onClick={() => handlePageNav(-1)} isDisabled={page === 1 ? true : false} size='sm' icon={<FaArrowLeft />} />
@@ -22,4 +22,4 @@ const TopRatedHeader = ({ setPage, page, setIsLoading }) => {
     );
 };
 
-export default TopRatedHeader;
+export default TopMoviesHeader;

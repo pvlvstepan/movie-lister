@@ -1,14 +1,14 @@
 import { GridItem, SimpleGrid, VStack } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import MovieCard from '../../../components/MovieCard';
-import TopRatedHeader from './TopRatedHeader';
-import useAPIrequest from './../../../adapters/useAPIrequest';
+import TopMoviesHeader from './TopMoviesHeader';
+import useAPIrequest from '../../../adapters/useAPIrequest';
 
-const TopRated = () => {
+const TopMovies = ({ type }) => {
 
     const [page, setPage] = useState(1);
 
-    const { response, error } = useAPIrequest('https://yts.mx/api/v2/list_movies.json?sort_by=rating&limit=6&page=' + page);
+    const { response, error } = useAPIrequest('https://yts.mx/api/v2/list_movies.json?sort_by=' + type + '&limit=6&page=' + page);
 
     const [isLoading, setIsLoading] = useState(true);
 
@@ -21,8 +21,8 @@ const TopRated = () => {
     }, [response]);
 
     return (
-        <VStack>
-            <TopRatedHeader setPage={setPage} page={page} setIsLoading={setIsLoading} />
+        <VStack py={6}>
+            <TopMoviesHeader setPage={setPage} page={page} setIsLoading={setIsLoading} type={type} />
             <SimpleGrid w='full' columns={3} row={2} spacing={6}>
                 {response && response.data.movies.map((val, key) => {
                     return (
@@ -41,4 +41,4 @@ const TopRated = () => {
     );
 };
 
-export default TopRated;
+export default TopMovies;
