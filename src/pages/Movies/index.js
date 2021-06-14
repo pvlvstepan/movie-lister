@@ -1,8 +1,9 @@
-import { Heading, Box, Divider, SimpleGrid, GridItem } from '@chakra-ui/react';
+import { Heading, Box, Divider, SimpleGrid, GridItem, VStack } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import useAPIrequest from '../../adapters/useAPIrequest';
 import MovieCard from '../../components/MovieCard';
 import useWidnowLocation from '../../hooks/useWidnowLocation';
+import Pagination from './Pagination';
 
 const Movies = () => {
 
@@ -23,9 +24,9 @@ const Movies = () => {
     }, [response]);
 
     return (
-        <Box p={6} bg='gray.700'>
-            <Heading as='h1' fontSize='3xl'>{title}</Heading>
-            <Divider my={6} />
+        <VStack spacing={6} p={6} bg='gray.700'>
+            <Heading alignSelf='start' as='h1' fontSize='3xl'>{title}</Heading>
+            <Divider />
             <SimpleGrid w='full' columns={4} spacing={6}>
                 {response && response.data.movies.map((val, key) => {
                     return (
@@ -40,7 +41,13 @@ const Movies = () => {
                     );
                 })}
             </SimpleGrid>
-        </Box>
+            {response && <Pagination
+                setPage={setPage}
+                setIsLoading={setIsLoading}
+                page={page}
+                limit={response.data.limit}
+                movie_count={response.data['movie_count']} />}
+        </VStack>
     );
 };
 

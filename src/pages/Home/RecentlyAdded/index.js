@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const RecentlyAdded = () => {
 
-    const { response, error } = useAPIrequest('https://yts.mx/api/v2/list_movies.json?sort_by=date_added&limit=6&page=1');
+    const { response, error } = useAPIrequest('https://yts.mx/api/v2/list_movies.json?sort_by=date_added');
 
     const [isLoading, setIsLoading] = useState(true);
 
@@ -22,7 +22,7 @@ const RecentlyAdded = () => {
         <VStack spacing={6} align='start' py={6}>
             <Heading whiteSpace='nowrap' textTransform='uppercase' as='h4' fontSize='md'>Recently Added</Heading>
             <Box as='hr' w='full' />
-            {response && response.data.movies.map((val, key) => {
+            {response && response.data.movies.slice(0, 6).map((val, key) => {
                 return (
                     <GridItem key={key} w='full'>
                         <MovieCard
