@@ -13,7 +13,7 @@ const MovieCard = ({ img, title, year, rating, isLoading }) => {
     }, [isLoading]);
 
     return (
-        <VStack align='start'>
+        <VStack align='start' _hover={{ transform: 'scale(1.05)' }} transition='.25s ease-in-out'>
             <AspectRatio ratio={2 / 3} w='full'>
                 <Skeleton rounded='xl' isLoaded={!isLoading && !imageIsLoading}>
                     <Image rounded='xl' src={img} onLoad={() => setImageIsLoading(false)} />
