@@ -2,7 +2,7 @@ import { AspectRatio, Heading, HStack, Image, Skeleton, SkeletonText, Text, VSta
 import React, { useEffect, useState } from 'react';
 import { AiFillStar } from 'react-icons/ai';
 
-const MovieCard = ({ img, title, year, rating, isLoading }) => {
+const MovieCard = ({ img, title, year, rating, isLoading, aspect }) => {
 
     const [imageIsLoading, setImageIsLoading] = useState(true);
 
@@ -13,12 +13,13 @@ const MovieCard = ({ img, title, year, rating, isLoading }) => {
     }, [isLoading]);
 
     return (
-        <VStack align='start' _hover={{ transform: 'scale(1.05)' }} transition='.25s ease-in-out'>
-            <AspectRatio ratio={2 / 3} w='full'>
-                <Skeleton rounded='xl' isLoaded={!isLoading && !imageIsLoading}>
-                    <Image rounded='xl' src={img} onLoad={() => setImageIsLoading(false)} />
-                </Skeleton>
-            </AspectRatio>
+        <VStack align='start' _hover={{ transform: 'scale(1.05)' }} transition='.25s ease-in-out' maxW='300px'>
+
+            <Skeleton rounded='lg' w='full' isLoaded={!isLoading && !imageIsLoading}>
+                <AspectRatio ratio={aspect ? aspect : 2 / 3} w='full' objectFit="cover">
+                    <Image fit='cover' rounded='lg' src={img} onLoad={() => setImageIsLoading(false)} />
+                </AspectRatio>
+            </Skeleton>
             <Skeleton maxW='full' isLoaded={!isLoading}>
                 <Heading maxW='full' as='h3' fontSize='md' isTruncated title={title}>{title}</Heading>
             </Skeleton>

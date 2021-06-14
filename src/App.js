@@ -7,17 +7,17 @@ import Movie from "./pages/Movie";
 const App = () => {
 
   return (
-    <BrowserRouter>
-      <Navbar />
-      <Flex>
-        <Box flex='20%'></Box>
-        <Switch>
-          <Route exact path='/' component={Home} />
-          <Route path='/movie' component={Movie} />
-        </Switch>
-        <Box flex='20%'></Box>
-      </Flex>
-    </BrowserRouter>
+    <Box as='main' px={12}>
+      <BrowserRouter>
+        <Navbar />
+        <Flex>
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route path='/movie' component={Movie} />
+          </Switch>
+        </Flex>
+      </BrowserRouter>
+    </Box>
   );
 
 };
