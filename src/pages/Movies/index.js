@@ -9,10 +9,14 @@ import SortControls from './SortControls';
 const Movies = () => {
 
     const { title, type } = useWidnowLocation();
-
     const [page, setPage] = useState(1);
 
-    const { response, error } = useAPIrequest('https://yts.mx/api/v2/list_movies.json?sort_by=' + type + '&page=' + page);
+    const [quality, setQuality] = useState('all');
+    const [genre, setGenre] = useState('all');
+    const [orderBy, setOrderBy] = useState('desc');
+    const [rating, setRating] = useState(0);
+
+    const { response, error } = useAPIrequest('https://yts.mx/api/v2/list_movies.json?sort_by=' + type + '&quality=' + quality + '&genre=' + genre + '&minimum_rating=' + rating + '&order_by=' + orderBy + '&page=' + page);
 
     const [isLoading, setIsLoading] = useState(true);
 
@@ -24,11 +28,20 @@ const Movies = () => {
         }
     }, [response]);
 
+    useEffect(() => {
+        setIsLoading(true);
+    }, [quality, genre, orderBy, rating]);
+
     return (
         <VStack spacing={6} p={6} bg='gray.700'>
             <Heading alignSelf='start' as='h1' fontSize='3xl'>{title}</Heading>
             <Divider />
-            <SortControls />
+            <SortControls
+                rating={rating}
+                setQuality={setQuality}
+                setGenre={setGenre}
+                setOrderBy={setOrderBy}
+                setRating={setRating} />
             <SimpleGrid w='full' columns={4} spacing={6}>
                 {response && response.data.movies.map((val, key) => {
                     return (
