@@ -1,4 +1,4 @@
-import { GridItem, Heading, Button, VStack } from '@chakra-ui/react';
+import { GridItem, Heading, Button, VStack, Box } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import MovieCard from '../../../components/MovieCard';
 import useAPIrequest from '../../../adapters/useAPIrequest';
@@ -18,8 +18,9 @@ const RecentlyAdded = () => {
     }, [response]);
 
     return (
-        <VStack spacing={6} align='start' width='220px' py={6}>
+        <VStack spacing={6} align='start' py={6}>
             <Heading whiteSpace='nowrap' as='h2' fontSize='2xl'>Recently Added</Heading>
+            <Box as='hr' w='full' />
             {response && response.data.movies.map((val, key) => {
                 return (
                     <GridItem key={key} w='full'>
@@ -33,7 +34,8 @@ const RecentlyAdded = () => {
                     </GridItem>
                 );
             })}
-            <Button>View More</Button>
+            <Box as='hr' w='full' />
+            <Button w='full' colorScheme='green'>View More</Button>
         </VStack>
     );
 };

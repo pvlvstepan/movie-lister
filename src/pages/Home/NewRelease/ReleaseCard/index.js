@@ -10,8 +10,8 @@ const ReleaseCard = () => {
             </AspectRatio>
             <Center as={VStack} spacing={6} pos='absolute' w='full' h='full' inset={0}>
                 <Heading as='h1' fontSize='5xl'>Game Of Thrones (2020)</Heading>
-                <Button colorScheme='red'>Download Now</Button>
-                <Button leftIcon={<FaPlay />} colorScheme='red' variant='outline'>Watch Trailer</Button>
+                <Button colorScheme='green'>Download Now</Button>
+                <Button leftIcon={<FaPlay />} colorScheme='green' variant='outline'>Watch Trailer</Button>
             </Center>
         </Box>
     );
