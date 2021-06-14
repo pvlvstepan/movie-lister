@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import CategoriesNav from "./components/CategoriesNav";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
-import Movie from "./pages/Movie";
+import Movies from "./pages/Movies";
 
 const App = () => {
 
@@ -21,7 +21,7 @@ const App = () => {
           <GridItem colSpan={4}>
             <Switch>
               <Route exact path='/' component={Home} />
-              <Route path='/movie' component={Movie} />
+              <Route path='/movies' component={Movies} />
             </Switch>
           </GridItem>
           <GridItem>

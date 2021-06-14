@@ -2,6 +2,7 @@ import { GridItem, Heading, Button, VStack, Box } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import MovieCard from '../../../components/MovieCard';
 import useAPIrequest from '../../../adapters/useAPIrequest';
+import { Link } from "react-router-dom";
 
 const RecentlyAdded = () => {
 
@@ -34,7 +35,7 @@ const RecentlyAdded = () => {
                     </GridItem>
                 );
             })}
-            <Button w='full' colorScheme='green'>View More</Button>
+            <Button as={Link} to='/movies/recent' w='full' colorScheme='green'>View More</Button>
         </VStack>
     );
 };

@@ -1,7 +1,8 @@
-import { Spacer, Flex, Heading, HStack, IconButton, Button, Box, Text } from '@chakra-ui/react';
+import { Flex, Heading, HStack, IconButton, Button, Box } from '@chakra-ui/react';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import { GoPrimitiveDot } from 'react-icons/go';
 import React from 'react';
+import { Link } from "react-router-dom";
 
 const TopMoviesHeader = ({ setPage, page, setIsLoading, type }) => {
 
@@ -21,8 +22,17 @@ const TopMoviesHeader = ({ setPage, page, setIsLoading, type }) => {
                     {[...Array(6)].map((e, i) => <GoPrimitiveDot opacity={i + 1 === page ? 1 : 0.3} />)}
                 </HStack>
                 <IconButton onClick={() => handlePageNav(-1)} isDisabled={page === 1 ? true : false} size='sm' icon={<FaArrowLeft />} />
+
                 {page < 6 && <IconButton onClick={() => handlePageNav(+1)} size='sm' icon={<FaArrowRight />} />}
-                {page === 6 && <Button size='sm' rightIcon={<FaArrowRight />}>See all</Button>}
+
+                {page === 6 && <Button
+                    as={Link}
+                    to={'/movies/' + type}
+                    size='sm'
+                    rightIcon={<FaArrowRight />}>
+                    See all
+                </Button>}
+
             </HStack>
         </Flex>
     );

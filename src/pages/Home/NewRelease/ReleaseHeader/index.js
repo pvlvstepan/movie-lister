@@ -1,6 +1,6 @@
 import { Badge, Box, Flex, Heading, HStack, Button, Spacer } from '@chakra-ui/react';
 import React from 'react';
-
+import { Link } from "react-router-dom";
 const ReleaseHeader = () => {
     return (
         <Flex direction='row' w='full' align='center' py={6}>
@@ -9,7 +9,7 @@ const ReleaseHeader = () => {
                 <Badge rounded='lg' colorScheme='green' fontSize='xl'>New</Badge>
             </HStack>
             <Spacer />
-            <Button size='sm'>See All</Button>
+            <Button as={Link} to='/movies/new' size='sm'>See All</Button>
         </Flex>
     );
 };
