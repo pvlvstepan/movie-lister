@@ -1,9 +1,12 @@
-import { Heading } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import React from 'react';
+import NewRelease from '../../components/NewRelease';
 
 const Home = () => {
     return (
-        <Heading as='h1'>Home page</Heading>
+        <Box as='section'>
+            <NewRelease />
+        </Box>
     );
 };
 
