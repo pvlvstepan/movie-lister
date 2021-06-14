@@ -27,7 +27,7 @@ const TopMoviesHeader = ({ setPage, page, setIsLoading, type }) => {
 
                 {page === 6 && <Button
                     as={Link}
-                    to={'/movies/' + type}
+                    to={'/movies/' + (type === 'rating' ? 'rating' : type === 'like_count' ? 'likes' : 'downloads')}
                     size='sm'
                     rightIcon={<FaArrowRight />}>
                     See all

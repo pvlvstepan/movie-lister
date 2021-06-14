@@ -1,5 +1,6 @@
-import { Heading, Box, Divider, SimpleGrid, GridItem, VStack } from '@chakra-ui/react';
+import { Heading, Box, Divider, SimpleGrid, GridItem, VStack, Spacer, Button, HStack } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import useAPIrequest from '../../adapters/useAPIrequest';
 import MovieCard from '../../components/MovieCard';
 import useWidnowLocation from '../../hooks/useWidnowLocation';
@@ -34,7 +35,11 @@ const Movies = () => {
 
     return (
         <VStack spacing={6} p={6} bg='gray.700'>
-            <Heading alignSelf='start' as='h1' fontSize='3xl'>{title}</Heading>
+            <HStack alignSelf='start' w='full'>
+                <Heading as='h1' fontSize='3xl'>{title}</Heading>
+                <Spacer />
+                <Button as={Link} to='/' size='sm'>Back to Home</Button>
+            </HStack>
             <Divider />
             <SortControls
                 rating={rating}
