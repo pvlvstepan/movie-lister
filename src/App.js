@@ -1,6 +1,7 @@
 import { Container, GridItem, SimpleGrid } from "@chakra-ui/react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import CategoriesNav from "./components/CategoriesNav";
+import Footer from "./components/Footer";
 import MovieDetails from "./components/MovieDetails";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
@@ -29,6 +30,7 @@ const App = () => {
           </GridItem>
         </SimpleGrid>
         <MovieDetails />
+        <Footer />
       </BrowserRouter>
     </Container>
   );

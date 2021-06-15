@@ -79,11 +79,11 @@ const MovieDetails = () => {
                                     </HStack>
                                     <HStack spacing={3} justify='flex-start' w='full'>
                                         <Box as={AiFillLike} fontSize='20px' color={starColor} />
-                                        <Text whiteSpace='nowrap' display='flex' dir='row' fontWeight='semibold'>{response.data.movie['like_count'] > 0 ? response.data.movie['like_count'] : 'No Likes'}</Text>
+                                        <Text whiteSpace='nowrap' display='flex' dir='row' fontWeight='semibold'>{response.data.movie['like_count'] > 0 ? response.data.movie['like_count'].toLocaleString() : 'No Likes'}</Text>
                                     </HStack>
                                     <HStack spacing={3} justify='flex-start' w='full'>
                                         <Box as={FaDownload} fontSize='20px' color={starColor} />
-                                        <Text whiteSpace='nowrap' display='flex' dir='row' fontWeight='semibold'>{response.data.movie['download_count'] > 0 ? response.data.movie['download_count'] : 'No Downloads'}</Text>
+                                        <Text whiteSpace='nowrap' display='flex' dir='row' fontWeight='semibold'>{response.data.movie['download_count'] > 0 ? response.data.movie['download_count'].toLocaleString() : 'No Downloads'}</Text>
                                     </HStack>
                                     <HStack spacing={3} justify='flex-start' w='full'>
                                         <Box as={FaLanguage} fontSize='20px' color={starColor} />
