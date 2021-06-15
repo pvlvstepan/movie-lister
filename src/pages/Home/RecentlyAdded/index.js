@@ -1,4 +1,4 @@
-import { GridItem, Heading, Button, VStack, Box } from '@chakra-ui/react';
+import { GridItem, Heading, Button, VStack, Box, Center, Spinner } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import MovieCard from '../../../components/MovieCard';
 import useAPIrequest from '../../../adapters/useAPIrequest';
@@ -36,7 +36,8 @@ const RecentlyAdded = () => {
                     </GridItem>
                 );
             })}
-            <Button as={Link} to='/movies/recent' w='full' colorScheme='green'>View More</Button>
+            {response && <Button as={Link} to='/movies/recent' w='full' colorScheme='green'>View More</Button>}
+            {isLoading && <Center w='full'><Spinner /></Center>}
         </VStack>
     );
 };

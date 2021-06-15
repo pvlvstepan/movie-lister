@@ -1,4 +1,4 @@
-import { GridItem, SimpleGrid, VStack } from '@chakra-ui/react';
+import { Center, GridItem, SimpleGrid, Spinner, VStack } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import MovieCard from '../../../components/MovieCard';
 import TopMoviesHeader from './TopMoviesHeader';
@@ -37,6 +37,7 @@ const TopMovies = ({ type }) => {
                         </GridItem>
                     );
                 })}
+                {isLoading && <GridItem as={Center} colSpan={3}><Spinner /></GridItem>}
             </SimpleGrid>
         </VStack>
     );

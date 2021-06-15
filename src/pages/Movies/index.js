@@ -1,4 +1,4 @@
-import { Heading, Divider, SimpleGrid, GridItem, VStack, Spacer, Button, HStack, useColorModeValue } from '@chakra-ui/react';
+import { Heading, Divider, SimpleGrid, GridItem, VStack, Spacer, Button, HStack, useColorModeValue, Center, Spinner } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import useAPIrequest from '../../adapters/useAPIrequest';
@@ -71,6 +71,7 @@ const Movies = () => {
                         </GridItem>
                     );
                 })}
+                {isLoading && <GridItem as={Center} colSpan={4}><Spinner /></GridItem>}
             </SimpleGrid>
             {response && <Pagination
                 setPage={setPage}
