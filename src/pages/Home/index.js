@@ -10,7 +10,7 @@ const Home = () => {
             <GridItem colSpan={1}>
                 <RecentlyAdded />
             </GridItem>
-            <GridItem colSpan={3} bg='gray.700' px={6}>
+            <GridItem colSpan={3} bg='gray.700' px={6} rounded='xl'>
                 <NewRelease />
                 <TopMovies type='rating' />
                 <TopMovies type='like_count' />
