@@ -1,4 +1,4 @@
-import { Button, Center, GridItem, SimpleGrid, useColorModeValue } from '@chakra-ui/react';
+import { Box, Button, Center, GridItem, SimpleGrid, useColorModeValue } from '@chakra-ui/react';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import NewRelease from './NewRelease';
@@ -7,12 +7,15 @@ import TopMovies from './TopMovies';
 
 const Home = () => {
     return (
-        <SimpleGrid columns={4} row={1} spacing={6} pb={6}>
-            <GridItem colSpan={1}>
+        <SimpleGrid columns={4} row={1} spacing={6} pb={{ base: 0, md: 6 }}>
+            <GridItem colSpan={1} display={{ base: 'none', lg: 'block' }}>
                 <RecentlyAdded />
             </GridItem>
-            <GridItem colSpan={3} bg={useColorModeValue('gray.300', 'gray.700')} px={6} rounded='xl' pb={6}>
+            <GridItem colSpan={{ base: 4, lg: 3 }} bg={useColorModeValue('gray.300', 'gray.700')} p={{ base: 3, md: 6 }} rounded='xl'>
                 <NewRelease />
+                <Box display={{ base: 'block', lg: 'none' }}>
+                    <RecentlyAdded />
+                </Box>
                 <TopMovies type='rating' />
                 <TopMovies type='like_count' />
                 <TopMovies type='download_count' />

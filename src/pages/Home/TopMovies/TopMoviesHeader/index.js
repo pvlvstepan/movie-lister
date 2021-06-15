@@ -1,4 +1,4 @@
-import { Flex, Heading, HStack, IconButton, Button, Box } from '@chakra-ui/react';
+import { Stack, Heading, HStack, IconButton, Button, Divider, Spacer } from '@chakra-ui/react';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import { GoPrimitiveDot } from 'react-icons/go';
 import React from 'react';
@@ -12,15 +12,14 @@ const TopMoviesHeader = ({ setPage, page, setIsLoading, type }) => {
     };
 
     return (
-        <Flex direction='row' w='full' align='center' py={6}>
+        <Stack direction={{ base: 'column', sm: 'row' }} w='full' align={{ base: 'start', sm: 'center' }} py={6} spacing={6}>
             <Heading whiteSpace='nowrap' as='h2' fontSize='2xl'>Top {type === 'rating' ? 'Rated' : type === 'like_count' ? 'Likes' : 'Downloads'}</Heading>
-            <Box w='full' px={3}>
-                <hr />
-            </Box>
-            <HStack>
+            <Divider w='full' />
+            <HStack w={{ base: 'full', sm: 'min' }}>
                 <HStack spacing={0}>
                     {[...Array(6)].map((e, i) => <GoPrimitiveDot key={i} opacity={i + 1 === page ? 1 : 0.3} />)}
                 </HStack>
+                <Spacer display={{ base: 'block', sm: 'none' }} />
                 <IconButton onClick={() => handlePageNav(-1)} isDisabled={page === 1 ? true : false} size='sm' icon={<FaArrowLeft />} />
 
                 {page < 6 && <IconButton onClick={() => handlePageNav(+1)} size='sm' icon={<FaArrowRight />} />}
@@ -34,7 +33,7 @@ const TopMoviesHeader = ({ setPage, page, setIsLoading, type }) => {
                 </Button>}
 
             </HStack>
-        </Flex>
+        </Stack>
     );
 };
 

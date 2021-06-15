@@ -23,7 +23,7 @@ const TopMovies = ({ type }) => {
     return (
         <VStack py={6}>
             <TopMoviesHeader setPage={setPage} page={page} setIsLoading={setIsLoading} type={type} />
-            <SimpleGrid w='full' columns={3} row={2} spacing={6}>
+            <SimpleGrid w='full' columns={{ base: 1, xs: 2, sm: 3 }} row={2} spacing={6}>
                 {response && response.data.movies.map((val, key) => {
                     return (
                         <GridItem key={key}>

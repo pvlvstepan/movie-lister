@@ -88,12 +88,14 @@ const NewRelease = () => {
                     <IconButton
                         pos='absolute'
                         left={3}
+                        bottom={3}
                         onClick={() => handlePageChange(-1)}
                         size='sm'
                         icon={<FaArrowLeft />} />
                     <IconButton
                         pos='absolute'
                         right={3}
+                        bottom={3}
                         onClick={() => handlePageChange(+1)}
                         size='sm'
                         icon={<FaArrowRight />} />
