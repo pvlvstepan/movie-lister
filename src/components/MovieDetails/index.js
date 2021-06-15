@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react';
-import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, Button, useDisclosure, AspectRatio, Image, Stack, Flex, Heading, HStack, VStack, Text, Divider, Badge, Box, useColorModeValue, Wrap, } from "@chakra-ui/react";
+import React, { useEffect, useState } from 'react';
+import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, Button, useDisclosure, AspectRatio, Image, Stack, Flex, Heading, HStack, VStack, Text, Divider, Badge, Box, useColorModeValue, Wrap, Skeleton, Center, Spinner, } from "@chakra-ui/react";
 import { useHistory, useLocation } from 'react-router-dom';
 import useAPIrequest from '../../adapters/useAPIrequest';
 import { IoTime } from 'react-icons/io5';
 import { AiFillLike, AiFillStar } from 'react-icons/ai';
 import { FaDownload, FaLanguage } from 'react-icons/fa';
 import Trailer from './Trailer';
+import SuggestedMovies from './SuggestedMovies';
 
 const MovieDetails = () => {
 
@@ -35,13 +36,27 @@ const MovieDetails = () => {
 
     const starColor = useColorModeValue('green.500', 'green.200');
 
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        if (response && response !== null) {
+            setIsLoading(false);
+        } else {
+            setIsLoading(true);
+        }
+    }, [response]);
+
+    useEffect(() => {
+        setIsLoading(true);
+    }, [query.get("movie_id")]);
+
     return (
         <Modal isOpen={isOpen} onClose={handleClose} size='2xl'>
             <ModalOverlay />
             <ModalContent>
                 <ModalHeader />
                 <ModalCloseButton />
-                <ModalBody>
+                <ModalBody pb={3}>
                     {response &&
                         <VStack spacing={6}>
                             <HStack w='full' align='start' spacing={6}>
@@ -83,9 +98,9 @@ const MovieDetails = () => {
                                 <Trailer ytID={response.data.movie['yt_trailer_code']} /></>}
                             {response.data.movie['description_full'] && <><Divider />
                                 <Heading as='h3' fontSize='lg' align='left' w='full'>Description</Heading>
-                                <Text>{response.data.movie['description_full']}</Text></>}
+                                <Text align='left' w='full'>{response.data.movie['description_full']}</Text></>}
                             <Divider />
-                            <Heading as='h3' fontSize='lg' align='left' w='full'>Downloads</Heading>
+                            <Heading as='h3' fontSize='lg' align='left' w='full'>Torrents</Heading>
                             <Wrap spacing={3} wrap='wrap' align='start' w='full'>
                                 {response.data.movie['torrents'] && response.data.movie['torrents'].map((val, key) => {
                                     return (
@@ -95,12 +110,13 @@ const MovieDetails = () => {
                                     );
                                 })}
                             </Wrap>
+                            <Divider />
+                            <Heading as='h3' fontSize='lg' align='left' w='full'>Suggested Movies</Heading>
+                            <SuggestedMovies id={query.get("movie_id")} />
                         </VStack>
                     }
+                    {isLoading && <Center w='full' pb={3}><Spinner /></Center>}
                 </ModalBody>
-                <ModalFooter>
-                    footer
-                </ModalFooter>
             </ModalContent>
         </Modal>
     );
