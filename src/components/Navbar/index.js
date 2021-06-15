@@ -1,4 +1,4 @@
-import { AspectRatio, Box, Button, Divider, Heading, HStack, Image, Input, InputGroup, InputLeftElement, Modal, ModalBody, ModalContent, ModalHeader, ModalOverlay, useDisclosure, VStack } from '@chakra-ui/react';
+import { AspectRatio, Box, Button, Divider, GridItem, Heading, HStack, Image, Input, InputGroup, InputLeftElement, Modal, ModalBody, ModalContent, ModalHeader, ModalOverlay, SimpleGrid, useDisclosure, VStack } from '@chakra-ui/react';
 import { ImVideoCamera } from 'react-icons/im';
 import React, { useState } from 'react';
 import ColorModeToggle from './ColorModeToggle';
@@ -16,16 +16,22 @@ const Navbar = () => {
     const { response, error } = useAPIrequest('https://yts.mx/api/v2/list_movies.json?query_term=' + SearchTerm.toLowerCase());
 
     return (
-        <HStack as='header' py={6} justify='space-between'>
-            <HStack as={Link} to='/' fontSize='4xl' maxW='220px' w='full'>
-                <ImVideoCamera />
-                <Heading as='h2' fontSize='2xl'>MovieLister</Heading>
-            </HStack>
-            <InputAsButton onOpen={onOpen} />
-            <HStack>
-                <Button px={9}>Your Profile</Button>
-                <ColorModeToggle />
-            </HStack>
+        <SimpleGrid as='header' columns={5} row={1} spacing={6} mt={6} mb={9}>
+            <GridItem colSpan={{ base: 3, lg: 1 }}>
+                <HStack as={Link} to='/' fontSize='4xl' maxW='220px' w='full'>
+                    <ImVideoCamera />
+                    <Heading as='h2' fontSize='2xl'>MovieLister</Heading>
+                </HStack>
+            </GridItem>
+            <GridItem colSpan={{ base: 5, lg: 3 }}>
+                <InputAsButton onOpen={onOpen} />
+            </GridItem>
+            <GridItem colSpan={{ base: 2, lg: 1 }} colStart={{ base: 4, lg: 5 }} rowStart={1}>
+                <HStack>
+                    <Button width='full'>Your Profile</Button>
+                    <ColorModeToggle />
+                </HStack>
+            </GridItem>
             <Modal isOpen={isOpen} onClose={() => {
                 onClose();
                 setSearchTerm('');
@@ -65,7 +71,7 @@ const Navbar = () => {
                     </ModalBody>
                 </ModalContent>
             </Modal>
-        </HStack>
+        </SimpleGrid>
     );
 };
 

@@ -14,7 +14,7 @@ const InputAsButton = ({ onOpen }) => {
     }, [onOpen]);
 
     return (
-        <InputGroup maxW='600px'>
+        <InputGroup maxW='full'>
             <InputLeftElement pointerEvents="none" children={<IoSearchSharp />} />
             <Input
                 as={Button}
@@ -24,7 +24,7 @@ const InputAsButton = ({ onOpen }) => {
                 variant="filled">
                 Search Movies
             </Input>
-            <InputRightElement mr={6} display={{ base: "none", lg: "flex" }} pointerEvents="none" children={<><Kbd>alt</Kbd> + <Kbd>s</Kbd></>} />
+            <InputRightElement mr={6} display={{ base: "none", md: "flex" }} pointerEvents="none" children={<><Kbd>alt</Kbd> + <Kbd>s</Kbd></>} />
         </InputGroup>
     );
 };

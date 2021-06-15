@@ -17,8 +17,8 @@ const App = () => {
     }}>
       <BrowserRouter>
         <Navbar />
-        <SimpleGrid columns={5} row={1}>
-          <GridItem colSpan={4}>
+        <SimpleGrid columns={5} row={1} spacing={6}>
+          <GridItem colSpan={{ base: 5, md: 4 }}>
             <Switch>
               <Route exact path='/' component={Home} />
               <Route path='/movies/' component={Movies} />
