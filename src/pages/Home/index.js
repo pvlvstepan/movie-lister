@@ -1,4 +1,4 @@
-import { Box, GridItem, HStack, SimpleGrid } from '@chakra-ui/react';
+import { GridItem, SimpleGrid } from '@chakra-ui/react';
 import React from 'react';
 import NewRelease from './NewRelease';
 import RecentlyAdded from './RecentlyAdded';

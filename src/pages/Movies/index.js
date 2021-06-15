@@ -1,4 +1,4 @@
-import { Heading, Box, Divider, SimpleGrid, GridItem, VStack, Spacer, Button, HStack } from '@chakra-ui/react';
+import { Heading, Divider, SimpleGrid, GridItem, VStack, Spacer, Button, HStack } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import useAPIrequest from '../../adapters/useAPIrequest';

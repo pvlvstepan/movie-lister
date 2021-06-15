@@ -1,4 +1,4 @@
-import { Box, Container, Flex, GridItem, SimpleGrid } from "@chakra-ui/react";
+import { Container, GridItem, SimpleGrid } from "@chakra-ui/react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import CategoriesNav from "./components/CategoriesNav";
 import Navbar from "./components/Navbar";

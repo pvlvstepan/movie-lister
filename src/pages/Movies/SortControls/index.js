@@ -1,4 +1,4 @@
-import { HStack, Select, Slider, SliderTrack, SliderFilledTrack, SliderThumb, Box, Stack, VStack, Text, Input, } from '@chakra-ui/react';
+import { HStack, Select, Slider, SliderTrack, SliderFilledTrack, SliderThumb, Box, Stack, Text } from '@chakra-ui/react';
 import React from 'react';
 
 const SortControls = ({ rating, setQuality, setGenre, setOrderBy, setRating }) => {

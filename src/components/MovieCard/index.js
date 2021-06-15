@@ -1,4 +1,4 @@
-import { AspectRatio, Heading, HStack, Image, Skeleton, SkeletonText, Text, VStack } from '@chakra-ui/react';
+import { AspectRatio, Heading, HStack, Image, Skeleton, Text, VStack } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { AiFillStar } from 'react-icons/ai';
 

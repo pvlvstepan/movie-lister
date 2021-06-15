@@ -19,7 +19,7 @@ const TopMoviesHeader = ({ setPage, page, setIsLoading, type }) => {
             </Box>
             <HStack>
                 <HStack spacing={0}>
-                    {[...Array(6)].map((e, i) => <GoPrimitiveDot opacity={i + 1 === page ? 1 : 0.3} />)}
+                    {[...Array(6)].map((e, i) => <GoPrimitiveDot key={i} opacity={i + 1 === page ? 1 : 0.3} />)}
                 </HStack>
                 <IconButton onClick={() => handlePageNav(-1)} isDisabled={page === 1 ? true : false} size='sm' icon={<FaArrowLeft />} />
 
