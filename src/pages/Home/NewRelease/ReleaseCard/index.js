@@ -21,7 +21,7 @@ const ReleaseCard = ({ show, title, img, id, youtube }) => {
                 <Button onClick={() => history.push("?movie_id=" + id)} colorScheme='green' boxShadow='dark-lg'>Download Now</Button>
                 {youtube !== '' && <Button onClick={() => onOpen()} textColor='white' leftIcon={<FaPlay />} boxShadow='dark-lg' colorScheme='green' variant='outline'>Watch Trailer</Button>}
             </Center>
-            <YoutubeEmbedded isOpen={isOpen} onClose={onClose} videoID={youtube} title={title} />
+            {youtube !== '' && <YoutubeEmbedded isOpen={isOpen} onClose={onClose} videoID={youtube} title={title} />}
         </Box >
     );
 };

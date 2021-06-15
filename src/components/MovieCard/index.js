@@ -19,7 +19,7 @@ const MovieCard = ({ img, title, year, rating, isLoading, aspect, id }) => {
         <VStack cursor='pointer' onClick={() => history.push("?movie_id=" + id)} align='start' _hover={{ transform: 'scale(1.05)' }} transition='.25s ease-in-out' maxW='300px'>
             <Skeleton rounded='lg' w='full' isLoaded={!isLoading && !imageIsLoading}>
                 <AspectRatio ratio={aspect ? aspect : 2 / 3} w='full' objectFit="cover">
-                    <Image fit='cover' rounded='lg' src={img} onLoad={() => setImageIsLoading(false)} />
+                    <Image alt={title} fit='cover' rounded='lg' src={img} onLoad={() => setImageIsLoading(false)} />
                 </AspectRatio>
             </Skeleton>
             <Skeleton maxW='full' isLoaded={!isLoading}>
