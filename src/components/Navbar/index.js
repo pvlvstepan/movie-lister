@@ -15,9 +15,6 @@ const Navbar = () => {
 
     const { response, error } = useAPIrequest('https://yts.mx/api/v2/list_movies.json?query_term=' + SearchTerm.toLowerCase());
 
-    console.log('https://yts.mx/api/v2/list_movies.json?query_term=' + SearchTerm.toLowerCase());
-
-    console.log(response);
     return (
         <HStack as='header' py={6} justify='space-between'>
             <HStack as={Link} to='/' fontSize='4xl' maxW='220px' w='full'>
@@ -52,15 +49,15 @@ const Navbar = () => {
                         {(response && response.data.movies) && <VStack w='full'>
                             {response.data.movies.map((val, key) => {
                                 return (
-                                    <>
+                                    <Box key={key} w='full' >
                                         <Divider />
-                                        <HStack cursor='pointer' onClick={() => history.push("?movie_id=" + val.id)} key={key} w='full' spacing={6}>
+                                        <HStack cursor='pointer' onClick={() => history.push("?movie_id=" + val.id)} spacing={6}>
                                             <AspectRatio ratio={2 / 3} w='10%' objectFit="cover">
                                                 <Image alt={val.title} fit='cover' rounded='lg' src={val['small_cover_image']} />
                                             </AspectRatio>
                                             <Heading maxW='80%' as='h3' fontSize='xl'>{val['title_long']}</Heading>
                                         </HStack>
-                                    </>
+                                    </Box>
                                 );
                             })}
                         </VStack>}

@@ -13,17 +13,15 @@ const NewRelease = () => {
 
     const [isLoading, setIsLoading] = useState(true);
 
-    const arr = [
+    const [page, setPage] = useState(1);
+    const [slides, setSlides] = useState([
         { show: true },
         { show: false },
         { show: false },
         { show: false },
         { show: false },
         { show: false },
-    ];
-
-    const [page, setPage] = useState(1);
-    const [slides, setSlides] = useState(arr);
+    ]);
 
     const handlePageChange = (dir) => {
         if (dir === +1) {
@@ -34,6 +32,15 @@ const NewRelease = () => {
     };
 
     useEffect(() => {
+        const arr = [
+            { show: true },
+            { show: false },
+            { show: false },
+            { show: false },
+            { show: false },
+            { show: false },
+        ];
+
         if (response && response !== null) {
             arr.map((item, index) => {
                 return [

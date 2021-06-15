@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { IoSearchSharp } from 'react-icons/io5';
-import { Kbd, InputGroup, InputLeftElement, InputRightElement, Input, useColorModeValue, Button } from "@chakra-ui/react";
+import { Kbd, InputGroup, InputLeftElement, InputRightElement, Input, Button } from "@chakra-ui/react";
 
 const InputAsButton = ({ onOpen }) => {
 

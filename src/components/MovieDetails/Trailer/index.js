@@ -1,4 +1,4 @@
-import { AspectRatio, Box, Skeleton } from '@chakra-ui/react';
+import { AspectRatio, Skeleton } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 
 const Trailer = ({ ytID }) => {
@@ -12,7 +12,7 @@ const Trailer = ({ ytID }) => {
     return (
         <Skeleton w='full' isLoaded={!isLoading}>
             <AspectRatio ratio={16 / 9} maxW='full'>
-                <iframe id="ytplayer" type="text/html" onLoad={() => setIsLoading(false)}
+                <iframe title={ytID} id="ytplayer" type="text/html" onLoad={() => setIsLoading(false)}
                     src={"https://www.youtube.com/embed/" + ytID}
                 ></iframe>
             </AspectRatio>

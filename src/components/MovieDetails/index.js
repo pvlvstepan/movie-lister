@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, Button, useDisclosure, AspectRatio, Image, Stack, Flex, Heading, HStack, VStack, Text, Divider, Badge, Box, useColorModeValue, Wrap, Skeleton, Center, Spinner, } from "@chakra-ui/react";
+import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalCloseButton, Button, useDisclosure, Image, Heading, HStack, VStack, Text, Divider, Badge, Box, useColorModeValue, Wrap, Center, Spinner, } from "@chakra-ui/react";
 import { useHistory, useLocation } from 'react-router-dom';
 import useAPIrequest from '../../adapters/useAPIrequest';
 import { IoTime } from 'react-icons/io5';
@@ -19,11 +19,13 @@ const MovieDetails = () => {
     const query = useQuery();
     const history = useHistory();
 
+    const id = query.get("movie_id");
+
     useEffect(() => {
-        if (query.get("movie_id")) {
+        if (id) {
             onOpen();
         }
-    }, [query]);
+    }, [query, id, onOpen]);
 
     const handleClose = () => {
         history.replace({
@@ -32,7 +34,7 @@ const MovieDetails = () => {
         onClose();
     };
 
-    const { response, error } = useAPIrequest('https://yts.mx/api/v2/movie_details.json?movie_id=' + query.get("movie_id"));
+    const { response, error } = useAPIrequest('https://yts.mx/api/v2/movie_details.json?movie_id=' + id);
 
     const starColor = useColorModeValue('green.500', 'green.200');
 
@@ -48,7 +50,7 @@ const MovieDetails = () => {
 
     useEffect(() => {
         setIsLoading(true);
-    }, [query.get("movie_id")]);
+    }, [id]);
 
     return (
         <Modal isOpen={isOpen} onClose={handleClose} size='2xl'>
@@ -64,13 +66,13 @@ const MovieDetails = () => {
                                 <VStack spacing={3} w='full' align='start'>
                                     <Heading as='h1' align='left'>{response.data.movie['title_long']}</Heading>
                                     <Divider />
-                                    <HStack spacing={3} wrap='wrap' justify='flex-start' w='full'>
+                                    <Wrap spacing={3} wrap='wrap' justify='flex-start' w='full'>
                                         {response.data.movie['genres'].map((val, key) => {
                                             return (
                                                 <Badge key={key}>{val}</Badge>
                                             );
                                         })}
-                                    </HStack>
+                                    </Wrap>
                                     <HStack spacing={3} justify='flex-start' w='full'>
                                         <Box as={AiFillStar} fontSize='20px' color={starColor} />
                                         <Text whiteSpace='nowrap' display='flex' dir='row' fontWeight='semibold'>{response.data.movie['rating'] > 0 ? response.data.movie['rating'].toFixed(1) + ' / 10' : 'No rating'}</Text>

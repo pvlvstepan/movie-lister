@@ -16,7 +16,7 @@ const YoutubeEmbedded = ({ isOpen, onClose, videoID, title }) => {
                 <ModalBody pb={6}>
                     <Skeleton w='full' isLoaded={!isLoading} rounded='lg'>
                         <AspectRatio ratio={16 / 9} maxW='full'>
-                            <iframe id="ytplayer" type="text/html" onLoad={() => setIsLoading(false)}
+                            <iframe title={title} id="ytplayer" type="text/html" onLoad={() => setIsLoading(false)}
                                 src={"https://www.youtube.com/embed/" + videoID}
                             ></iframe>
                         </AspectRatio>
