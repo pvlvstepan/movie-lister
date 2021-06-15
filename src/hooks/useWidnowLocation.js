@@ -18,9 +18,12 @@ const useWidnowLocation = () => {
     } else if (location.pathname === '/movies/downloads') {
         title = 'Top Downloads';
         type = 'download_count';
-    } else {
+    } else if (location.pathname === '/movies/recent') {
         title = 'Recently Added';
         type = 'date_added';
+    } else {
+        title = 'All Movies';
+        type = 'all';
     }
 
     return { title, type };
