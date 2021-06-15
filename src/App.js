@@ -1,6 +1,5 @@
-import { Container, GridItem, SimpleGrid, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, useDisclosure, Button, } from "@chakra-ui/react";
-import { useEffect } from "react";
-import { BrowserRouter, Route, Switch, useParams } from "react-router-dom";
+import { Container, GridItem, SimpleGrid } from "@chakra-ui/react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import CategoriesNav from "./components/CategoriesNav";
 import MovieDetails from "./components/MovieDetails";
 import Navbar from "./components/Navbar";
@@ -8,9 +7,6 @@ import Home from "./pages/Home";
 import Movies from "./pages/Movies";
 
 const App = () => {
-
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
   return (
     <Container as='main' maxW={{
       xs: 'full',
@@ -32,7 +28,7 @@ const App = () => {
             <CategoriesNav />
           </GridItem>
         </SimpleGrid>
-        <MovieDetails isOpen={isOpen} onClose={onClose} onOpen={onOpen} />
+        <MovieDetails />
       </BrowserRouter>
     </Container>
   );

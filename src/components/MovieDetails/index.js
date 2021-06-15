@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
-import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, Button, } from "@chakra-ui/react";
+import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, Button, useDisclosure, } from "@chakra-ui/react";
 import { useHistory, useLocation } from 'react-router-dom';
 
-const MovieDetails = ({ onClose, isOpen, onOpen }) => {
+const MovieDetails = () => {
 
-    function useQuery() {
+    const { isOpen, onOpen, onClose } = useDisclosure();
+
+    const useQuery = () => {
         return new URLSearchParams(useLocation().search);
-    }
+    };
 
     const query = useQuery();
     const history = useHistory();
