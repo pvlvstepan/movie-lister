@@ -71,7 +71,7 @@ const NewRelease = () => {
                     }
                     )}
 
-                    <HStack spacing={0} pos='absolute' bottom={3}>
+                    <HStack spacing={0} pos='absolute' bottom={3} color='white'>
                         {[...Array(6)].map((e, i) => <GoPrimitiveDot key={i} opacity={i + 1 === page ? 1 : 0.3} />)}
                     </HStack>
                     <IconButton

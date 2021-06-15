@@ -1,4 +1,4 @@
-import { Heading, Divider, SimpleGrid, GridItem, VStack, Spacer, Button, HStack } from '@chakra-ui/react';
+import { Heading, Divider, SimpleGrid, GridItem, VStack, Spacer, Button, HStack, useColorModeValue } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import useAPIrequest from '../../adapters/useAPIrequest';
@@ -43,7 +43,7 @@ const Movies = () => {
     }, [quality, genre, orderBy, rating, type]);
 
     return (
-        <VStack spacing={6} p={6} bg='gray.700' rounded='xl' mb={6}>
+        <VStack spacing={6} p={6} bg={useColorModeValue('gray.300', 'gray.700')} rounded='xl' mb={6}>
             <HStack alignSelf='start' w='full'>
                 <Heading as='h1' fontSize='3xl'>{title}</Heading>
                 <Spacer />

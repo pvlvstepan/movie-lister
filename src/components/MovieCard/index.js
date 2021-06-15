@@ -1,4 +1,4 @@
-import { AspectRatio, Heading, HStack, Image, Skeleton, Text, VStack } from '@chakra-ui/react';
+import { AspectRatio, Box, Heading, HStack, Image, Skeleton, Text, useColorModeValue, VStack } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { AiFillStar } from 'react-icons/ai';
 
@@ -26,7 +26,7 @@ const MovieCard = ({ img, title, year, rating, isLoading, aspect }) => {
             <Skeleton width='min' isLoaded={!isLoading}>
                 <HStack width='full' align='center'>
                     {year > 0 && <Text >{year}</Text>}
-                    <AiFillStar fontSize='20px' color='green' />
+                    <Box as={AiFillStar} fontSize='20px' color={useColorModeValue('green.500', 'green.200')} />
                     <Text whiteSpace='nowrap' display='flex' dir='row' fontWeight='semibold'>{rating > 0 ? rating + ' / 10' : 'No rating'}</Text>
                 </HStack>
             </Skeleton>

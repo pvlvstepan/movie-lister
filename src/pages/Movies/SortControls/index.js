@@ -8,17 +8,17 @@ const SortControls = ({ rating, setQuality, setGenre, setOrderBy, setRating, dis
     return (
         <Stack spacing={3} w='full'>
             <HStack spacing={3} >
-                <Select placeholder="Order By" size='sm' rounded='lg' onChange={(e) => setOrderBy(e.target.value)}>
+                <Select variant='filled' placeholder="Order By" size='sm' rounded='lg' onChange={(e) => setOrderBy(e.target.value)}>
                     <option value="desc">Descending</option>
                     <option value="asc">Ascending</option>
                 </Select>
-                <Select placeholder="Quality" size='sm' rounded='lg' onChange={(e) => setQuality(e.target.value)}>
+                <Select variant='filled' placeholder="Quality" size='sm' rounded='lg' onChange={(e) => setQuality(e.target.value)}>
                     <option value="720p">720p</option>
                     <option value="1080p">1080p</option>
                     <option value="2160p">2160p</option>
                     <option value="3D">3D</option>
                 </Select>
-                {displayGenre && <Select placeholder="Genre" defaultValue='all' size='sm' rounded='lg' onChange={(e) => setGenre(e.target.value)}>
+                {displayGenre && <Select variant='filled' placeholder="Genre" defaultValue='all' size='sm' rounded='lg' onChange={(e) => setGenre(e.target.value)}>
                     {categories.map((val, key) => {
                         return (
                             <option value={val} key={key}>{toProperCase(val)}</option>

@@ -1,4 +1,4 @@
-import { Button, Center, GridItem, SimpleGrid } from '@chakra-ui/react';
+import { Button, Center, GridItem, SimpleGrid, useColorModeValue } from '@chakra-ui/react';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import NewRelease from './NewRelease';
@@ -11,7 +11,7 @@ const Home = () => {
             <GridItem colSpan={1}>
                 <RecentlyAdded />
             </GridItem>
-            <GridItem colSpan={3} bg='gray.700' px={6} rounded='xl' pb={6}>
+            <GridItem colSpan={3} bg={useColorModeValue('gray.300', 'gray.700')} px={6} rounded='xl' pb={6}>
                 <NewRelease />
                 <TopMovies type='rating' />
                 <TopMovies type='like_count' />
