@@ -1,6 +1,7 @@
 import { extendTheme } from '@chakra-ui/react';
 
 import breakpoints from './breakpoints';
+import styles from './styles';
 
 const config = {
     initialColorMode: 'dark',
@@ -9,7 +10,8 @@ const config = {
 
 const overrides = extendTheme({
     config,
-    breakpoints
+    breakpoints,
+    styles
 });
 
 export default overrides;

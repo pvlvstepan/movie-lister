@@ -34,7 +34,7 @@ const App = () => {
             </Switch>
           </GridItem>
           <GridItem>
-            <CategoriesNav isOpen={isOpen} toggleSideNav={toggleSideNav} />
+            <CategoriesNav isOpen={isOpen} toggleSideNav={toggleSideNav} setIsOpen={setIsOpen} />
           </GridItem>
         </SimpleGrid>
         <MovieDetails />
