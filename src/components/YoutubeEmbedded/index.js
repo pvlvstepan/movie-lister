@@ -8,7 +8,7 @@ const YoutubeEmbedded = ({ isOpen, onClose, videoID, title }) => {
     return (
         <Modal isOpen={isOpen} onClose={onClose} size='2xl' >
             <ModalOverlay />
-            <ModalContent>
+            <ModalContent px={3}>
                 <ModalHeader mb={1}>
                     {title}
                 </ModalHeader>
