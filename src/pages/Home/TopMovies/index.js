@@ -8,7 +8,7 @@ const TopMovies = ({ type }) => {
 
     const [page, setPage] = useState(1);
 
-    const { response, error } = useAPIrequest('https://yts.mx/api/v2/list_movies.json?sort_by=' + type + '&limit=6&page=' + page);
+    const { response } = useAPIrequest('https://yts.mx/api/v2/list_movies.json?sort_by=' + type + '&limit=6&page=' + page);
 
     const [isLoading, setIsLoading] = useState(true);
 

@@ -34,7 +34,7 @@ const MovieDetails = () => {
         onClose();
     };
 
-    const { response, error } = useAPIrequest('https://yts.mx/api/v2/movie_details.json?movie_id=' + id);
+    const { response } = useAPIrequest('https://yts.mx/api/v2/movie_details.json?movie_id=' + id);
 
     const starColor = useColorModeValue('green.500', 'green.200');
 

@@ -18,7 +18,7 @@ const Movies = () => {
     const [orderBy, setOrderBy] = useState('desc');
     const [rating, setRating] = useState(0);
 
-    const { response, error } = useAPIrequest('https://yts.mx/api/v2/list_movies.json?' + (genreFromURL ? '' : ('sort_by=' + type + '&')) + 'quality=' + quality + '&genre=' + genre + '&minimum_rating=' + rating + '&order_by=' + orderBy + '&page=' + page);
+    const { response } = useAPIrequest('https://yts.mx/api/v2/list_movies.json?' + (genreFromURL ? '' : ('sort_by=' + type + '&')) + 'quality=' + quality + '&genre=' + genre + '&minimum_rating=' + rating + '&order_by=' + orderBy + '&page=' + page);
 
     const [isLoading, setIsLoading] = useState(true);
 

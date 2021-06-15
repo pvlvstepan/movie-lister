@@ -5,7 +5,7 @@ import MovieCard from './../../MovieCard';
 
 const SuggestedMovies = ({ id }) => {
 
-    const { response, error } = useAPIrequest('https://yts.mx/api/v2/movie_suggestions.json?movie_id=' + id);
+    const { response } = useAPIrequest('https://yts.mx/api/v2/movie_suggestions.json?movie_id=' + id);
 
     const [isLoading, setIsLoading] = useState(true);
 

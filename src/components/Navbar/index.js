@@ -14,7 +14,7 @@ const Navbar = ({ toggleSideNav }) => {
     const [SearchTerm, setSearchTerm] = useState('');
     const history = useHistory();
 
-    const { response, error } = useAPIrequest('https://yts.mx/api/v2/list_movies.json?query_term=' + SearchTerm.toLowerCase());
+    const { response } = useAPIrequest('https://yts.mx/api/v2/list_movies.json?query_term=' + SearchTerm.toLowerCase());
 
     return (
         <SimpleGrid as='header' columns={5} row={1} spacing={3} mt={6} mb={9}>

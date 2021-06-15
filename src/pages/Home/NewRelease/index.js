@@ -9,7 +9,7 @@ import useAPIrequest from '../../../adapters/useAPIrequest';
 
 const NewRelease = () => {
 
-    const { response, error } = useAPIrequest('https://yts.mx/api/v2/list_movies.json?sort_by=year');
+    const { response } = useAPIrequest('https://yts.mx/api/v2/list_movies.json?sort_by=year');
 
     const [isLoading, setIsLoading] = useState(true);
 

@@ -1,7 +1,6 @@
 import { Heading, HStack, Link, Text, VStack, Wrap } from '@chakra-ui/react';
 import { Link as RouterLink } from 'react-router-dom';
 import React from 'react';
-import { GoPrimitiveDot } from 'react-icons/go';
 import { ImVideoCamera } from 'react-icons/im';
 
 const Footer = () => {
