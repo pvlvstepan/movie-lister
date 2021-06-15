@@ -38,7 +38,9 @@ const NewRelease = () => {
             arr.map((item, index) => {
                 return [
                     item.img = response.data.movies[index]['background_image_original'],
-                    item.title = response.data.movies[index]['title_long']
+                    item.title = response.data.movies[index]['title_long'],
+                    item.id = response.data.movies[index]['id'],
+                    item.youtube = response.data.movies[index]['yt_trailer_code'],
                 ];
             });
 
@@ -66,7 +68,9 @@ const NewRelease = () => {
                                 key={key}
                                 isLoading={isLoading}
                                 img={item.img}
-                                title={item.title} />
+                                title={item.title}
+                                id={item.id}
+                                youtube={item.youtube} />
                         );
                     }
                     )}

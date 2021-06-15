@@ -66,7 +66,8 @@ const Movies = () => {
                                 title={val['title_english']}
                                 year={val['year']}
                                 isLoading={isLoading}
-                                rating={val['rating']} />
+                                rating={val['rating']}
+                                id={val['id']} />
                         </GridItem>
                     );
                 })}

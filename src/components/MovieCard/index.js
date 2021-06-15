@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { AiFillStar } from 'react-icons/ai';
 import { useHistory } from 'react-router-dom';
 
-const MovieCard = ({ img, title, year, rating, isLoading, aspect }) => {
+const MovieCard = ({ img, title, year, rating, isLoading, aspect, id }) => {
 
     const [imageIsLoading, setImageIsLoading] = useState(true);
 
@@ -16,7 +16,7 @@ const MovieCard = ({ img, title, year, rating, isLoading, aspect }) => {
     }, [isLoading]);
 
     return (
-        <VStack onClick={() => history.push("?movie_id=1")} align='start' _hover={{ transform: 'scale(1.05)' }} transition='.25s ease-in-out' maxW='300px'>
+        <VStack cursor='pointer' onClick={() => history.push("?movie_id=" + id)} align='start' _hover={{ transform: 'scale(1.05)' }} transition='.25s ease-in-out' maxW='300px'>
             <Skeleton rounded='lg' w='full' isLoaded={!isLoading && !imageIsLoading}>
                 <AspectRatio ratio={aspect ? aspect : 2 / 3} w='full' objectFit="cover">
                     <Image fit='cover' rounded='lg' src={img} onLoad={() => setImageIsLoading(false)} />
