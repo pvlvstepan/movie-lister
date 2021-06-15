@@ -22,7 +22,7 @@ const SuggestedMovies = ({ id }) => {
     }, [id]);
 
     return (
-        <SimpleGrid columns={4} w='full' spacing={3}>
+        <SimpleGrid columns={{ base: 1, xs: 2, md: 4 }} w='full' spacing={3}>
             {response && response.data.movies.map((val, key) => {
                 return (
                     <GridItem key={key}>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalCloseButton, Button, useDisclosure, Image, Heading, HStack, VStack, Text, Divider, Badge, Box, useColorModeValue, Wrap, Center, Spinner, } from "@chakra-ui/react";
+import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalCloseButton, Button, useDisclosure, Image, Heading, HStack, VStack, Text, Divider, Badge, Box, useColorModeValue, Wrap, Center, Spinner, Stack, } from "@chakra-ui/react";
 import { useHistory, useLocation } from 'react-router-dom';
 import useAPIrequest from '../../adapters/useAPIrequest';
 import { IoTime } from 'react-icons/io5';
@@ -55,14 +55,14 @@ const MovieDetails = () => {
     return (
         <Modal isOpen={isOpen} onClose={handleClose} size='2xl'>
             <ModalOverlay />
-            <ModalContent>
-                <ModalHeader />
+            <ModalContent mx={6}>
+                <ModalHeader pb={6} />
                 <ModalCloseButton />
                 <ModalBody pb={3}>
                     {response &&
                         <VStack spacing={6}>
-                            <HStack w='full' align='start' spacing={6}>
-                                <Image maxW='200px' rounded='md' src={response.data.movie['medium_cover_image']}></Image>
+                            <Stack direction={{ base: 'column', sm: 'row' }} w='full' align='start' spacing={6}>
+                                <Image width={{ base: '100%', sm: '200px' }} rounded='md' src={response.data.movie['large_cover_image']}></Image>
                                 <VStack spacing={3} w='full' align='start'>
                                     <Heading as='h1' align='left'>{response.data.movie['title_long']}</Heading>
                                     <Divider />
@@ -94,7 +94,7 @@ const MovieDetails = () => {
                                         <Text whiteSpace='nowrap' display='flex' dir='row' fontWeight='semibold'>{response.data.movie['runtime'] > 0 ? (response.data.movie['runtime'] + ' Minutes') : 'Unknown'}</Text>
                                     </HStack>
                                 </VStack>
-                            </HStack>
+                            </Stack>
                             {response.data.movie['yt_trailer_code'] !== '' && <><Divider />
                                 <Heading as='h3' fontSize='lg' align='left' w='full'>Trailer</Heading>
                                 <Trailer ytID={response.data.movie['yt_trailer_code']} /></>}
