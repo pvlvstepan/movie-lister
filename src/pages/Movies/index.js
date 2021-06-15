@@ -57,7 +57,7 @@ const Movies = () => {
                 setGenre={setGenre}
                 setOrderBy={setOrderBy}
                 setRating={setRating} />
-            <SimpleGrid w='full' columns={{ xs: 2, sm: 3, lg: 4 }} spacing={6}>
+            <SimpleGrid w='full' columns={{ base: 1, xs: 2, sm: 3, lg: 4 }} spacing={6}>
                 {response && response.data.movies.map((val, key) => {
                     return (
                         <GridItem key={key}>

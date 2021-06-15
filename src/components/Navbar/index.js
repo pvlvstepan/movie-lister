@@ -1,4 +1,4 @@
-import { AspectRatio, Box, Button, Divider, GridItem, Heading, HStack, Image, Input, InputGroup, InputLeftElement, Modal, ModalBody, ModalContent, ModalHeader, ModalOverlay, SimpleGrid, useDisclosure, VStack } from '@chakra-ui/react';
+import { AspectRatio, Box, Button, Center, Divider, GridItem, Heading, HStack, Image, Input, InputGroup, InputLeftElement, Modal, ModalBody, ModalContent, ModalHeader, ModalOverlay, SimpleGrid, Spinner, useDisclosure, VStack } from '@chakra-ui/react';
 import { ImVideoCamera } from 'react-icons/im';
 import React, { useState } from 'react';
 import ColorModeToggle from './ColorModeToggle';
@@ -52,11 +52,11 @@ const Navbar = () => {
                     <ModalBody
                         p={0} mt={6}
                         display={SearchTerm === '' ? "none" : "block"}>
-                        {(response && response.data.movies) && <VStack w='full'>
+                        {(response && response.data.movies) && <VStack w='full' spacing={3}>
                             {response.data.movies.map((val, key) => {
                                 return (
                                     <Box key={key} w='full' >
-                                        <Divider />
+                                        <Divider mb={3} />
                                         <HStack cursor='pointer' onClick={() => history.push("?movie_id=" + val.id)} spacing={6}>
                                             <AspectRatio ratio={2 / 3} w='10%' objectFit="cover">
                                                 <Image alt={val.title} fit='cover' rounded='lg' src={val['small_cover_image']} />
@@ -67,7 +67,9 @@ const Navbar = () => {
                                 );
                             })}
                         </VStack>}
-                        {(response && !response.data.movies) && <Heading as='h4' fontSize='lg'>No search results...</Heading>}
+                        {(response && !response.data.movies) && <Center w='full'>
+                            <Spinner />
+                        </Center>}
                     </ModalBody>
                 </ModalContent>
             </Modal>

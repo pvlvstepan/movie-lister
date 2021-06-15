@@ -7,7 +7,7 @@ const SortControls = ({ rating, setQuality, setGenre, setOrderBy, setRating, dis
 
     return (
         <Stack spacing={3} w='full'>
-            <HStack spacing={3} >
+            <Stack direction={{ base: 'column', sm: 'row' }} spacing={3} >
                 <Select variant='filled' placeholder="Order By" size='sm' rounded='lg' onChange={(e) => setOrderBy(e.target.value)}>
                     <option value="desc">Descending</option>
                     <option value="asc">Ascending</option>
@@ -25,7 +25,7 @@ const SortControls = ({ rating, setQuality, setGenre, setOrderBy, setRating, dis
                         );
                     })}
                 </Select>}
-            </HStack>
+            </Stack>
             <HStack spacing={6}>
                 <Text>Rating</Text>
                 <Slider colorScheme='green' defaultValue={0} min={0} max={9} step={1} onChangeEnd={(val) => setRating(val)}>
