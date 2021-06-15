@@ -1,12 +1,9 @@
 import { HStack, Select, Slider, SliderTrack, SliderFilledTrack, SliderThumb, Box, Stack, Text } from '@chakra-ui/react';
 import categories from './../../../data/categories';
+import toProperCase from '../../../functions/toProperCase';
 import React from 'react';
 
-const SortControls = ({ rating, setQuality, setGenre, setOrderBy, setRating }) => {
-
-    String.prototype.toProperCase = function () {
-        return this.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
-    };
+const SortControls = ({ rating, setQuality, setGenre, setOrderBy, setRating, displayGenre }) => {
 
     return (
         <Stack spacing={3} w='full'>
@@ -21,13 +18,13 @@ const SortControls = ({ rating, setQuality, setGenre, setOrderBy, setRating }) =
                     <option value="2160p">2160p</option>
                     <option value="3D">3D</option>
                 </Select>
-                <Select placeholder="Genre" size='sm' rounded='lg' onChange={(e) => setGenre(e.target.value)}>
+                {displayGenre && <Select placeholder="Genre" defaultValue='all' size='sm' rounded='lg' onChange={(e) => setGenre(e.target.value)}>
                     {categories.map((val, key) => {
                         return (
-                            <option value={val} key={key}>{val.toProperCase()}</option>
+                            <option value={val} key={key}>{toProperCase(val)}</option>
                         );
                     })}
-                </Select>
+                </Select>}
             </HStack>
             <HStack spacing={6}>
                 <Text>Rating</Text>

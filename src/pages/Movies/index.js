@@ -9,17 +9,26 @@ import SortControls from './SortControls';
 
 const Movies = () => {
 
-    const { title, type } = useWidnowLocation();
+    const { title, type, genreFromURL } = useWidnowLocation();
     const [page, setPage] = useState(1);
+
 
     const [quality, setQuality] = useState('all');
     const [genre, setGenre] = useState('all');
     const [orderBy, setOrderBy] = useState('desc');
     const [rating, setRating] = useState(0);
 
-    const { response, error } = useAPIrequest('https://yts.mx/api/v2/list_movies.json?sort_by=' + type + '&quality=' + quality + '&genre=' + genre + '&minimum_rating=' + rating + '&order_by=' + orderBy + '&page=' + page);
+    const { response, error } = useAPIrequest('https://yts.mx/api/v2/list_movies.json?' + (genreFromURL ? '' : ('sort_by=' + type + '&')) + 'quality=' + quality + '&genre=' + genre + '&minimum_rating=' + rating + '&order_by=' + orderBy + '&page=' + page);
 
     const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        if (genreFromURL !== null) {
+            setGenre(genreFromURL);
+        } else {
+            setGenre('all');
+        }
+    }, [genreFromURL]);
 
     useEffect(() => {
         if (response && response !== null) {
@@ -31,7 +40,7 @@ const Movies = () => {
 
     useEffect(() => {
         setIsLoading(true);
-    }, [quality, genre, orderBy, rating]);
+    }, [quality, genre, orderBy, rating, type]);
 
     return (
         <VStack spacing={6} p={6} bg='gray.700' rounded='xl'>
@@ -42,6 +51,7 @@ const Movies = () => {
             </HStack>
             <Divider />
             <SortControls
+                displayGenre={!genreFromURL}
                 rating={rating}
                 setQuality={setQuality}
                 setGenre={setGenre}

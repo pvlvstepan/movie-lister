@@ -1,5 +1,4 @@
 const categories = [
-    "all",
     "action",
     "adventure",
     "animation",
