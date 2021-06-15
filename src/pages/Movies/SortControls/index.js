@@ -1,7 +1,13 @@
 import { HStack, Select, Slider, SliderTrack, SliderFilledTrack, SliderThumb, Box, Stack, Text } from '@chakra-ui/react';
+import categories from './../../../data/categories';
 import React from 'react';
 
 const SortControls = ({ rating, setQuality, setGenre, setOrderBy, setRating }) => {
+
+    String.prototype.toProperCase = function () {
+        return this.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
+    };
+
     return (
         <Stack spacing={3} w='full'>
             <HStack spacing={3} >
@@ -16,33 +22,11 @@ const SortControls = ({ rating, setQuality, setGenre, setOrderBy, setRating }) =
                     <option value="3D">3D</option>
                 </Select>
                 <Select placeholder="Genre" size='sm' rounded='lg' onChange={(e) => setGenre(e.target.value)}>
-                    <option value="all">All</option>
-                    <option value="action">Action</option>
-                    <option value="adventure">Adventure</option>
-                    <option value="animation">Animation</option>
-                    <option value="biography">Biography</option>
-                    <option value="comedy">Comedy</option>
-                    <option value="crime">Crime</option>
-                    <option value="documentary">Documentary</option>
-                    <option value="drama">Drama</option>
-                    <option value="family">Family</option>
-                    <option value="fantasy">Fantasy</option>
-                    <option value="film-noir">Film-Noir</option>
-                    <option value="game-show">Game-Show</option>
-                    <option value="history">History</option>
-                    <option value="horror">Horror</option>
-                    <option value="music">Music</option>
-                    <option value="musical">Musical</option>
-                    <option value="mystery">Mystery</option>
-                    <option value="news">News</option>
-                    <option value="reality-tv">Reality-TV</option>
-                    <option value="romance">Romance</option>
-                    <option value="sci-fi">Sci-Fi</option>
-                    <option value="sport">Sport</option>
-                    <option value="talk-show">Talk-Show</option>
-                    <option value="thriller">Thriller</option>
-                    <option value="war">War</option>
-                    <option value="western">Western</option>
+                    {categories.map((val, key) => {
+                        return (
+                            <option value={val} key={key}>{val.toProperCase()}</option>
+                        );
+                    })}
                 </Select>
             </HStack>
             <HStack spacing={6}>
