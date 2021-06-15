@@ -1,4 +1,5 @@
 import { Container, GridItem, SimpleGrid } from "@chakra-ui/react";
+import { useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import CategoriesNav from "./components/CategoriesNav";
 import Footer from "./components/Footer";
@@ -8,6 +9,13 @@ import Home from "./pages/Home";
 import Movies from "./pages/Movies";
 
 const App = () => {
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleSideNav = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <Container as='main' maxW={{
       xs: 'full',
@@ -17,7 +25,7 @@ const App = () => {
       xxl: '1320px'
     }}>
       <BrowserRouter>
-        <Navbar />
+        <Navbar toggleSideNav={toggleSideNav} />
         <SimpleGrid columns={5} row={1} spacing={6}>
           <GridItem colSpan={{ base: 5, md: 4 }}>
             <Switch>
@@ -26,7 +34,7 @@ const App = () => {
             </Switch>
           </GridItem>
           <GridItem>
-            <CategoriesNav />
+            <CategoriesNav isOpen={isOpen} toggleSideNav={toggleSideNav} />
           </GridItem>
         </SimpleGrid>
         <MovieDetails />

@@ -1,13 +1,14 @@
-import { AspectRatio, Box, Button, Center, Divider, GridItem, Heading, HStack, Image, Input, InputGroup, InputLeftElement, Modal, ModalBody, ModalContent, ModalHeader, ModalOverlay, SimpleGrid, Spinner, useDisclosure, VStack } from '@chakra-ui/react';
+import { AspectRatio, Box, Button, Center, Divider, GridItem, Heading, HStack, IconButton, Image, Input, InputGroup, InputLeftElement, Modal, ModalBody, ModalContent, ModalHeader, ModalOverlay, SimpleGrid, Spinner, useDisclosure, VStack } from '@chakra-ui/react';
 import { ImVideoCamera } from 'react-icons/im';
 import React, { useState } from 'react';
 import ColorModeToggle from './ColorModeToggle';
 import { Link, useHistory } from 'react-router-dom';
 import InputAsButton from './InputAsButton';
-import { IoSearchSharp } from 'react-icons/io5';
+import { IoMenu, IoSearchSharp } from 'react-icons/io5';
 import useAPIrequest from '../../adapters/useAPIrequest';
+import { GoPerson } from 'react-icons/go';
 
-const Navbar = () => {
+const Navbar = ({ toggleSideNav }) => {
 
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [SearchTerm, setSearchTerm] = useState('');
@@ -16,7 +17,7 @@ const Navbar = () => {
     const { response, error } = useAPIrequest('https://yts.mx/api/v2/list_movies.json?query_term=' + SearchTerm.toLowerCase());
 
     return (
-        <SimpleGrid as='header' columns={5} row={1} spacing={6} mt={6} mb={9}>
+        <SimpleGrid as='header' columns={5} row={1} spacing={3} mt={6} mb={9}>
             <GridItem colSpan={{ base: 3, lg: 1 }}>
                 <HStack as={Link} to='/' fontSize='4xl' maxW='220px' w='full'>
                     <ImVideoCamera />
@@ -27,9 +28,11 @@ const Navbar = () => {
                 <InputAsButton onOpen={onOpen} />
             </GridItem>
             <GridItem colSpan={{ base: 2, lg: 1 }} colStart={{ base: 4, lg: 5 }} rowStart={1}>
-                <HStack>
-                    <Button width='full'>Your Profile</Button>
+                <HStack justify='flex-end'>
+                    <Button display={{ base: 'none', sm: 'flex' }} w='full'>Your Profile</Button>
+                    <IconButton display={{ base: 'flex', sm: 'none' }} icon={<GoPerson />}></IconButton>
                     <ColorModeToggle />
+                    <IconButton onClick={toggleSideNav} display={{ base: 'flex', md: 'none' }} icon={<IoMenu />}></IconButton>
                 </HStack>
             </GridItem>
             <Modal isOpen={isOpen} onClose={() => {
