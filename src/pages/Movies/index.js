@@ -1,4 +1,4 @@
-import { Heading, Divider, SimpleGrid, GridItem, VStack, Spacer, Button, HStack, useColorModeValue, Center, Spinner } from '@chakra-ui/react';
+import { Heading, Divider, SimpleGrid, GridItem, VStack, Spacer, Button, HStack, useColorModeValue, Center, Spinner, Box } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import useAPIrequest from '../../adapters/useAPIrequest';
@@ -43,7 +43,7 @@ const Movies = () => {
     }, [quality, genre, orderBy, rating, type]);
 
     return (
-        <VStack spacing={6} p={6} bg={useColorModeValue('gray.300', 'gray.700')} rounded='xl' mb={6}>
+        <VStack spacing={6} p={{ base: 3, md: 6 }} bg={useColorModeValue('gray.300', 'gray.700')} rounded='xl' mb={6}>
             <HStack alignSelf='start' w='full'>
                 <Heading as='h1' fontSize='3xl'>{title}</Heading>
                 <Spacer />
@@ -57,7 +57,7 @@ const Movies = () => {
                 setGenre={setGenre}
                 setOrderBy={setOrderBy}
                 setRating={setRating} />
-            <SimpleGrid w='full' columns={{ base: 1, xs: 2, sm: 3, lg: 4 }} spacing={6}>
+            <SimpleGrid w='full' columns={{ base: 1, xs: 2, sm: 3, lg: 4 }} spacing={{ base: 3, md: 6 }}>
                 {response && response.data.movies.map((val, key) => {
                     return (
                         <GridItem key={key}>
@@ -73,12 +73,14 @@ const Movies = () => {
                 })}
                 {isLoading && <GridItem as={Center} colSpan={{ xs: 2, sm: 3, xl: 4 }}><Spinner /></GridItem>}
             </SimpleGrid>
-            {response && <Pagination
-                setPage={setPage}
-                setIsLoading={setIsLoading}
-                page={page}
-                limit={response.data.limit}
-                movie_count={response.data['movie_count']} />}
+            {response && <Box overflowX='scroll' maxW='full'>
+                <Pagination
+                    setPage={setPage}
+                    setIsLoading={setIsLoading}
+                    page={page}
+                    limit={response.data.limit}
+                    movie_count={response.data['movie_count']} />
+            </Box>}
         </VStack>
     );
 };
