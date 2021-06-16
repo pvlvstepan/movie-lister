@@ -1,6 +1,7 @@
 import { Container, GridItem, SimpleGrid } from "@chakra-ui/react";
 import { useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import CommentsController from "./adapters/CommentsControler";
 import CategoriesNav from "./components/CategoriesNav";
 import Footer from "./components/Footer";
 import MovieDetails from "./components/MovieDetails";
@@ -25,6 +26,7 @@ const App = () => {
       xxl: '1320px'
     }}>
       <BrowserRouter>
+        <CommentsController />
         <Navbar toggleSideNav={toggleSideNav} />
         <SimpleGrid columns={5} row={1} spacing={6}>
           <GridItem colSpan={{ base: 5, md: 4 }}>
