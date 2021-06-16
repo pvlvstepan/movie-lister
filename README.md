@@ -1,5 +1,5 @@
 <h1 align='center'>MovieLister SPA</h1>
-<p align='center'>MovieLister is a single page application that I've developed during a coding interview at <a href='https://bigdata.msu.ru/' target='_blank'>Bigdata MSU</a>. The app features movies that are being pulled from <a href='YTS.mx' target='_blank'>YTS.mx API</a> and displays them in a neatly designed pages o the website.</p>
+<p align='center'>MovieLister is a single page application that I've developed during a coding interview at <a href='https://bigdata.msu.ru/' target='_blank'>Bigdata MSU</a>. The app features movies that are being pulled from <a href='YTS.mx' target='_blank'>YTS.mx API</a> and displays them in a neatly designed pages on the website.</p>
 <div align='center'>
 <a href='https://app.netlify.com/sites/react-movie-lister/deploys' target='_blank'>
 <img src='https://api.netlify.com/api/v1/badges/16d1b696-4965-4c53-979f-eef955e09dc3/deploy-status' alt='Netlify Status' />
