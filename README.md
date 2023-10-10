@@ -1,5 +1,7 @@
 # MovieLister
 
+[![pages-build-deployment](https://github.com/pvlvstepan/movie-lister/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/pvlvstepan/movie-lister/actions/workflows/pages/pages-build-deployment)
+
 MovieLister is a single-page application that fetches and displays movies from the YTS.mx API. It's designed for movie enthusiasts who want a simple and user-friendly way to explore and discover new films.
 
 ## Features
