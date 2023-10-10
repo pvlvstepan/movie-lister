@@ -1,7 +1,6 @@
 import {
   AspectRatio,
   Box,
-  Button,
   Center,
   Divider,
   GridItem,
